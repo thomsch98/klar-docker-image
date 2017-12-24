@@ -2,4 +2,11 @@
 
 set -e
 
-exec /usr/bin/klar "$@"
+export \
+    CLAIR_ADDR=${PLUGIN_CLAIR_ADDR} \
+    CLAIR_OUTPUT=${PLUGIN_CLAIR_OUTPUT} \
+    CLAIR_THRESHOLD=${PLUGIN_CLAIR_THRESHOLD} \
+    DOCKER_USER=${PLUGIN_DOCKER_USER} \
+    DOCKER_PASSWORD=${PLUGIN_DOCKER_PASSWORD}
+
+exec /usr/bin/klar "${PLUGIN_REPO}"
