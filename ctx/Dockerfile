@@ -1,6 +1,8 @@
-FROM alpine
+FROM alpine:3.7
 
-ADD https://github.com/optiopay/klar/releases/download/v2.0/klar-2.0-linux-amd64 /usr/bin/klar
+ENV KLAR_VER=2.0
+
+ADD https://github.com/optiopay/klar/releases/download/v${KLAR_VER}/klar-${KLAR_VER}-linux-amd64 /usr/bin/klar
 ADD entrypoint.sh /
 
 RUN apk add --update ca-certificates \
